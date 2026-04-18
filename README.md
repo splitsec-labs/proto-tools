@@ -1,6 +1,6 @@
 # proto-tools
 
-Personal collection of [proto](https://moonrepo.dev/proto) TOML plugins.
+Collection of [proto](https://moonrepo.dev/proto) TOML plugins.
 
 ## Usage
 
@@ -8,11 +8,11 @@ Reference a plugin from your `.prototools`:
 
 ```toml
 [plugins]
-humanlog = "https://raw.githubusercontent.com/jamesbradley/proto-tools/main/toml-plugins/humanlog/plugin.toml"
+hl = "https://raw.githubusercontent.com/splitsec-labs/proto-tools/main/toml-plugins/hl/plugin.toml"
 ```
 
 ## Plugins
 
 | Tool | Upstream |
 | --- | --- |
-| `humanlog` | <https://github.com/humanlogio/humanlog> |
+| `hl` | <https://github.com/pamburus/hl> |
