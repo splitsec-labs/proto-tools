@@ -1,0 +1,32 @@
+# A TOML plugin for proto: https://moonrepo.dev/docs/proto/non-wasm-plugin
+#
+# Upstream: https://github.com/tauri-apps/tauri (tags tauri-cli-v*)
+# Binary is cargo-tauri so `cargo tauri …` works via cargo subcommand discovery.
+
+name = "tauri-cli"
+type = "cli"
+
+[platform.linux]
+download-file = "cargo-tauri-{arch}-unknown-linux-gnu.tgz"
+exe-path = "cargo-tauri"
+
+[platform.macos]
+download-file = "cargo-tauri-{arch}-apple-darwin.zip"
+exe-path = "cargo-tauri"
+
+[platform.windows]
+download-file = "cargo-tauri-{arch}-pc-windows-msvc.zip"
+exe-path = "cargo-tauri.exe"
+
+[install]
+download-url = "https://github.com/tauri-apps/tauri/releases/download/tauri-cli-v{version}/{download_file}"
+unpack = true
+
+[install.exes.cargo-tauri]
+exe-path = "cargo-tauri"
+primary = true
+
+[resolve]
+git-url = "https://github.com/tauri-apps/tauri"
+# Monorepo tags include tauri-v*, tauri-runtime-*, etc. — only CLI releases.
+version-pattern = "^tauri-cli-v((?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+))"
