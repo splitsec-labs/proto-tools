@@ -1,0 +1,31 @@
+# A TOML plugin for proto: https://moonrepo.dev/docs/proto/non-wasm-plugin
+#
+# Upstream: https://github.com/nextest-rs/nextest (tags cargo-nextest-*)
+
+name = "cargo-nextest"
+type = "cli"
+
+[platform.linux]
+download-file = "cargo-nextest-{version}-{arch}-unknown-linux-gnu.tar.gz"
+exe-path = "cargo-nextest"
+
+[platform.macos]
+# Universal binary — no {arch} in the asset name.
+download-file = "cargo-nextest-{version}-universal-apple-darwin.tar.gz"
+exe-path = "cargo-nextest"
+
+[platform.windows]
+download-file = "cargo-nextest-{version}-{arch}-pc-windows-msvc.zip"
+exe-path = "cargo-nextest.exe"
+
+[install]
+download-url = "https://github.com/nextest-rs/nextest/releases/download/cargo-nextest-{version}/{download_file}"
+unpack = true
+
+[install.exes.cargo-nextest]
+exe-path = "cargo-nextest"
+primary = true
+
+[resolve]
+git-url = "https://github.com/nextest-rs/nextest"
+version-pattern = "^cargo-nextest-((?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+))"

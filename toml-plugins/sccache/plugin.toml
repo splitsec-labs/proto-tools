@@ -1,0 +1,33 @@
+# A TOML plugin for proto: https://moonrepo.dev/docs/proto/non-wasm-plugin
+#
+# Upstream: https://github.com/mozilla/sccache
+
+name = "sccache"
+type = "cli"
+
+[platform.linux]
+download-file = "sccache-v{version}-{arch}-unknown-linux-musl.tar.gz"
+# Archive contains a versioned directory prefix.
+archive-prefix = "sccache-v{version}-{arch}-unknown-linux-musl"
+exe-path = "sccache"
+
+[platform.macos]
+download-file = "sccache-v{version}-{arch}-apple-darwin.tar.gz"
+archive-prefix = "sccache-v{version}-{arch}-apple-darwin"
+exe-path = "sccache"
+
+[platform.windows]
+download-file = "sccache-v{version}-{arch}-pc-windows-msvc.zip"
+archive-prefix = "sccache-v{version}-{arch}-pc-windows-msvc"
+exe-path = "sccache.exe"
+
+[install]
+download-url = "https://github.com/mozilla/sccache/releases/download/v{version}/{download_file}"
+unpack = true
+
+[install.exes.sccache]
+exe-path = "sccache"
+primary = true
+
+[resolve]
+git-url = "https://github.com/mozilla/sccache"
