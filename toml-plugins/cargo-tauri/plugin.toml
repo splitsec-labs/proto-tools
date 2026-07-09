@@ -1,9 +1,10 @@
 # A TOML plugin for proto: https://moonrepo.dev/docs/proto/non-wasm-plugin
 #
 # Upstream: https://github.com/tauri-apps/tauri (tags tauri-cli-v*)
-# Binary is cargo-tauri so `cargo tauri …` works via cargo subcommand discovery.
+# Tool id matches the binary so cargo discovers `cargo tauri` without an
+# alt_bin parent remap (proto shim lookup by binary name).
 
-name = "tauri-cli"
+name = "cargo-tauri"
 type = "cli"
 
 [platform.linux]
