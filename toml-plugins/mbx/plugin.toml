@@ -1,0 +1,34 @@
+# A TOML plugin for proto: https://moonrepo.dev/docs/proto/non-wasm-plugin
+#
+# Upstream: https://github.com/jdx/mr-boxington
+
+name = "mbx"
+type = "cli"
+
+[platform.linux]
+download-file = "mbx-{arch}-unknown-linux-musl.tar.gz"
+exe-path = "mbx"
+
+# Upstream ships Apple Silicon only.
+[platform.macos]
+download-file = "mbx-{arch}-apple-darwin.tar.gz"
+exe-path = "mbx"
+
+[platform.windows]
+download-file = "mbx-{arch}-pc-windows-msvc.zip"
+exe-path = "mbx.exe"
+
+[install]
+download-url = "https://github.com/jdx/mr-boxington/releases/download/v{version}/{download_file}"
+checksum-url = "https://github.com/jdx/mr-boxington/releases/download/v{version}/SHA256SUMS"
+unpack = true
+
+[install.exes.mbx]
+exe-path = "mbx"
+primary = true
+# The cargo shim from `mbx setup` records an absolute mbx path and runs outside
+# any project, where proto's context-sensitive shim cannot resolve a version.
+no-shim = true
+
+[resolve]
+git-url = "https://github.com/jdx/mr-boxington"
